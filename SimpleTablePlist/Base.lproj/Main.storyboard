@@ -61,6 +61,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Ntx-dZ-5Z9">
                             <connections>
                                 <action selector="addItem:" destination="BYZ-38-t0r" id="05q-EP-hol"/>
+                                <segue destination="Avi-iE-n5s" kind="show" identifier="AddItem" id="f9r-zy-rSq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,6 +72,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1098" y="429"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="aAF-rz-9D5">
+            <objects>
+                <viewController id="Avi-iE-n5s" customClass="AddItemViewController" customModule="SimpleTablePlist" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Czn-dL-F3c"/>
+                        <viewControllerLayoutGuide type="bottom" id="gs6-ad-8zy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h4R-3L-ZYF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wus-zN-hro">
+                                <rect key="frame" x="41" y="108" width="34" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV4-md-mfd">
+                                <rect key="frame" x="41" y="155" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new item name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRd-mf-eG5">
+                                <rect key="frame" x="144" y="104" width="420" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pog-9V-FJm">
+                                <rect key="frame" x="144" y="151" width="420" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wus-zN-hro" firstAttribute="leading" secondItem="h4R-3L-ZYF" secondAttribute="leadingMargin" constant="25" id="1Km-PL-C3D"/>
+                            <constraint firstItem="Wus-zN-hro" firstAttribute="centerY" secondItem="sRd-mf-eG5" secondAttribute="centerY" id="KHO-CA-dVS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pog-9V-FJm" secondAttribute="trailing" constant="20" id="KYK-Y9-QYy"/>
+                            <constraint firstItem="aV4-md-mfd" firstAttribute="centerY" secondItem="pog-9V-FJm" secondAttribute="centerY" id="LBY-wI-JUB"/>
+                            <constraint firstItem="aV4-md-mfd" firstAttribute="leading" secondItem="Wus-zN-hro" secondAttribute="leading" id="TlH-Hg-suO"/>
+                            <constraint firstItem="aV4-md-mfd" firstAttribute="top" secondItem="Wus-zN-hro" secondAttribute="bottom" constant="26" id="VU4-uV-EyE"/>
+                            <constraint firstItem="pog-9V-FJm" firstAttribute="leading" secondItem="sRd-mf-eG5" secondAttribute="leading" id="a49-o1-bZj"/>
+                            <constraint firstItem="Wus-zN-hro" firstAttribute="top" secondItem="Czn-dL-F3c" secondAttribute="bottom" constant="44" id="ozu-yz-3dW"/>
+                            <constraint firstItem="pog-9V-FJm" firstAttribute="width" secondItem="sRd-mf-eG5" secondAttribute="width" id="sDL-7r-FTe"/>
+                            <constraint firstItem="pog-9V-FJm" firstAttribute="leading" secondItem="aV4-md-mfd" secondAttribute="trailing" constant="15" id="xvf-Wz-15e"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addDescriptionTextField" destination="pog-9V-FJm" id="TFC-yQ-Huj"/>
+                        <outlet property="addItemTextField" destination="sRd-mf-eG5" id="Q0p-va-UR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8s-jM-PIp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iRc-q8-fTt">

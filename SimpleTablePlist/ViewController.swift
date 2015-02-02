@@ -13,37 +13,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var object1 = Object(name: "Table Row 1", note: "my detailed notes go here")
     var objectList = [Object]()
     
-    @IBAction func addItem(sender: AnyObject) {
-        var alert = UIAlertController(title: "New object", message: "Add a table row", preferredStyle: .Alert)
-        
-        let saveAction = UIAlertAction(title: "Save", style: .Default) { (action: UIAlertAction!) -> Void in
-            let textField1 = alert.textFields![0] as UITextField
-            textField1.placeholder = "Add title"
-            let textField2 = alert.textFields![1] as UITextField
-            textField2.placeholder = "Add notes"
-            let newObject = Object(name: textField1.text,note: textField2.text)
-            self.objectList.append(newObject)
-            self.saveWithCoder()
-            self.tableView.reloadData()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddItem" {
+            // do something custom if necessary
+            let addItemVC = segue.destinationViewController as AddItemViewController
+            addItemVC.objectList = self.objectList
         }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { (action: UIAlertAction!) -> Void in
-            
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-        }
-        
-        alert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
-        }
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
-        
     }
 
     
@@ -72,12 +47,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         objectList.append(object1)
-        loadWithCoder()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        loadWithCoder()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

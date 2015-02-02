@@ -15,6 +15,7 @@
 		27188F311A7FD883000F8790 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27188F2F1A7FD883000F8790 /* LaunchScreen.xib */; };
 		27188F3D1A7FD883000F8790 /* SimpleTablePlistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27188F3C1A7FD883000F8790 /* SimpleTablePlistTests.swift */; };
 		27188F471A7FD8FC000F8790 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27188F461A7FD8FC000F8790 /* Object.swift */; };
+		27188F4B1A80073A000F8790 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27188F4A1A80073A000F8790 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		27188F3B1A7FD883000F8790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27188F3C1A7FD883000F8790 /* SimpleTablePlistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTablePlistTests.swift; sourceTree = "<group>"; };
 		27188F461A7FD8FC000F8790 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		27188F4A1A80073A000F8790 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddItemViewController.swift; path = ../AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,8 @@
 			children = (
 				27188F231A7FD883000F8790 /* AppDelegate.swift */,
 				27188F281A7FD883000F8790 /* ViewController.swift */,
-				27188F461A7FD8FC000F8790 /* Object.swift */,
+				27188F4A1A80073A000F8790 /* AddItemViewController.swift */,
+				27188F4C1A8008D3000F8790 /* Model */,
 				27188F2A1A7FD883000F8790 /* Main.storyboard */,
 				27188F2D1A7FD883000F8790 /* Images.xcassets */,
 				27188F2F1A7FD883000F8790 /* LaunchScreen.xib */,
@@ -116,6 +119,14 @@
 				27188F3B1A7FD883000F8790 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27188F4C1A8008D3000F8790 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27188F461A7FD8FC000F8790 /* Object.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27188F4B1A80073A000F8790 /* AddItemViewController.swift in Sources */,
 				27188F291A7FD883000F8790 /* ViewController.swift in Sources */,
 				27188F241A7FD883000F8790 /* AppDelegate.swift in Sources */,
 				27188F471A7FD8FC000F8790 /* Object.swift in Sources */,
