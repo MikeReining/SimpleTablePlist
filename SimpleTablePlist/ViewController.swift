@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let textField = alert.textFields![0] as UITextField
             let newObject = Object(name: textField.text)
             self.objectList.append(newObject)
+            self.saveWithCoder()
             self.tableView.reloadData()
         }
         
@@ -41,7 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let dataFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/objectList.plist"
     
-    func saveChecklistsItems() -> Bool {
+    // function to save new item to coder
+    func saveWithCoder() -> Bool {
         var data: NSMutableData = NSMutableData.alloc()
         var archiver: NSKeyedArchiver = NSKeyedArchiver(forWritingWithMutableData: data)
         archiver.encodeObject(objectList, forKey: "objectList")
@@ -50,11 +52,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return true
     }
     
+    // function to store list in coder
+    func loadWithCoder() {
+        let filePath = self.dataFilePath
+        if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
+            var data: NSData = NSData(contentsOfFile: filePath)!
+            var unArchiver: NSKeyedUnarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+            objectList = unArchiver.decodeObjectForKey("objectList") as [Object]
+            unArchiver.finishDecoding()
+        } else {
+            println("No data archive exists, creating empty Checklist")
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         objectList.append(object1)
+        loadWithCoder()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
