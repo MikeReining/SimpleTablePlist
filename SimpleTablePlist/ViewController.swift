@@ -47,13 +47,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     
-    let dataFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "/objectList.plist"
+    let dataFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "appData"
     
     // function to save new item to coder
     func saveWithCoder() -> Bool {
         var data: NSMutableData = NSMutableData.alloc()
         var archiver: NSKeyedArchiver = NSKeyedArchiver(forWritingWithMutableData: data)
-        archiver.encodeObject(objectList, forKey: "objectList")
+        archiver.encodeObject(objectList, forKey: "appData")
         archiver.finishEncoding()
         data.writeToFile(dataFilePath, atomically: true)
         return true
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if NSFileManager.defaultManager().fileExistsAtPath(filePath) {
             var data: NSData = NSData(contentsOfFile: filePath)!
             var unArchiver: NSKeyedUnarchiver = NSKeyedUnarchiver(forReadingWithData: data)
-            objectList = unArchiver.decodeObjectForKey("objectList") as [Object]
+            objectList = unArchiver.decodeObjectForKey("appData") as [Object]
             unArchiver.finishDecoding()
         } else {
             println("No data archive exists, creating empty Checklist")
