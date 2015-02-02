@@ -41,7 +41,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         let app = UIApplication.sharedApplication()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDataOnNotification:", name: UIApplicationWillResignActiveNotification, object: app)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDraftOnNotification:", name: UIApplicationWillResignActiveNotification, object: app)
     }
     
     
