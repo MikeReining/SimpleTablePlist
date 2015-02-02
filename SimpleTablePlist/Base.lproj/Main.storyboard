@@ -37,8 +37,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Testing" id="Wqh-OS-REW">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Ntx-dZ-5Z9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Ntx-dZ-5Z9">
+                            <connections>
+                                <action selector="addItem:" destination="BYZ-38-t0r" id="05q-EP-hol"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="nMt-So-yZ0" id="Uwh-fm-DR0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

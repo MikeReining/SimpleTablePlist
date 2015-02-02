@@ -14,12 +14,13 @@ class Object: NSObject, NSCoding {
         self.name = name
     }
     
+    // MARK: NSCoding
+    
     required init(coder aDecoder: NSCoder) {
         self.name = aDecoder.decodeObjectForKey("nameKey") as String
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
-        super.encode()
         aCoder.encodeObject(name, forKey: "nameKey")
     }
     
