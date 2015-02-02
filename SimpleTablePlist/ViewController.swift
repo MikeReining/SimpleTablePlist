@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         objectList.append(object1)
+        loadWithCoder()
         // Do any additional setup after loading the view, typically from a nib.
     }
     

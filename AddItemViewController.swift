@@ -27,9 +27,24 @@ class AddItemViewController: UIViewController {
         var data: NSMutableData = NSMutableData.alloc()
         var archiver: NSKeyedArchiver = NSKeyedArchiver(forWritingWithMutableData: data)
         archiver.encodeObject(objectList, forKey: "appData")
-        archiver.finishEncoding()
+        archiver.finishEncoding() 
         data.writeToFile(dataFilePath, atomically: true)
         return true
+    }
+    
+    // Save data whenever user leaves app from add screen
+    
+    
+    override func viewDidLoad() {
+        let app = UIApplication.sharedApplication()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDataOnNotification:", name: UIApplicationWillResignActiveNotification, object: app)
+    }
+    
+    
+    func saveDataOnNotification(notification:NSNotification) {
+        let myObject = Object(name: addItemTextField.text, note: addDescriptionTextField.text)
+        objectList?.append(myObject)
+        saveWithCoder()
     }
     
 }
