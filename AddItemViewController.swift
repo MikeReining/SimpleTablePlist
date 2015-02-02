@@ -15,6 +15,11 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var addItemTextField: UITextField!
     @IBOutlet weak var addDescriptionTextField: UITextField!
     
+    
+    override func viewWillAppear(animated: Bool) {
+        loadDraft()
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         let myObject = Object(name: addItemTextField.text, note: addDescriptionTextField.text)
         objectList?.append(myObject)
@@ -34,17 +39,27 @@ class AddItemViewController: UIViewController {
     
     // Save data whenever user leaves app from add screen
     
-    
     override func viewDidLoad() {
         let app = UIApplication.sharedApplication()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDataOnNotification:", name: UIApplicationWillResignActiveNotification, object: app)
     }
     
     
-    func saveDataOnNotification(notification:NSNotification) {
-        let myObject = Object(name: addItemTextField.text, note: addDescriptionTextField.text)
-        objectList?.append(myObject)
-        saveWithCoder()
+    func saveDraftOnNotification(notification:NSNotification) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(addItemTextField.text, forKey: "itemKey")
+        defaults.setObject(addDescriptionTextField.text, forKey: "descriptionKey")
+    
+    }
+    
+    func loadDraft() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name = defaults.stringForKey("itemKey") {
+            addItemTextField.text = name
+        }
+        if let description = defaults.stringForKey("descriptionKey") {
+            addDescriptionTextField.text = description
+        }
     }
     
 }
