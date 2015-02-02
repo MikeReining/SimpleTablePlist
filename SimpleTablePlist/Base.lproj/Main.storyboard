@@ -122,6 +122,14 @@
                             <constraint firstItem="pog-9V-FJm" firstAttribute="leading" secondItem="aV4-md-mfd" secondAttribute="trailing" constant="15" id="xvf-Wz-15e"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Set defaults" id="2id-jm-thj">
+                            <connections>
+                                <action selector="setDefaultsButton:" destination="Avi-iE-n5s" id="ndf-Pb-Q3d"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addDescriptionTextField" destination="pog-9V-FJm" id="TFC-yQ-Huj"/>
                         <outlet property="addItemTextField" destination="sRd-mf-eG5" id="Q0p-va-UR8"/>
