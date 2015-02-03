@@ -16,30 +16,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddItem" {
-            //check for navigation controller
-            // do something custom if necessary
             let addItemVC = segue.destinationViewController as AddItemViewController
+            //check for navigation controller
             if self.navigationController != nil {
+                // setup delegate
                 let navVC:UINavigationController = self.navigationController!
                 navVC.delegate = addItemVC
             }
-            
+            // pass along objectList to work with single list of items
             addItemVC.objectList = self.objectList
         }
     }
 
     
     let dataFilePath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String + "appData"
-    
-    // function to save new item to coder
-    func saveWithCoder() -> Bool {
-        var data: NSMutableData = NSMutableData.alloc()
-        var archiver: NSKeyedArchiver = NSKeyedArchiver(forWritingWithMutableData: data)
-        archiver.encodeObject(objectList, forKey: "appData")
-        archiver.finishEncoding()
-        data.writeToFile(dataFilePath, atomically: true)
-        return true
-    }
     
     // function to store list in coder
     func loadWithCoder() {
@@ -106,17 +96,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 }
 
-//extension ViewController:UINavigationControllerDelegate {
-//    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-//        //check for top vc
-//        if navigationController.topViewController.isEqual(<#object: AnyObject?#>) {
-//            //check for willshow vc
-//            if viewController .isEqual(self) {
-//                //do something interesting in the meanwhile
-//                    println("about to show this view controller incoming from some other one mentioned above!!")
-//            }
-//        }
-//        
-//    }
-//}
 
