@@ -20,11 +20,11 @@ class AddItemViewController: UIViewController {
         loadDraft()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    
+    func saveNewItem() {
         let myObject = Object(name: addItemTextField.text, note: addDescriptionTextField.text)
         objectList?.append(myObject)
         saveWithCoder()
-        
     }
     
     // function to save new item to coder
@@ -42,6 +42,7 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         let app = UIApplication.sharedApplication()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveDraftOnNotification:", name: UIApplicationWillResignActiveNotification, object: app)
+        addDescriptionTextField.contentVerticalAlignment = .Top
     }
     
     
@@ -62,4 +63,21 @@ class AddItemViewController: UIViewController {
         }
     }
     
+    func deleteDraft() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("", forKey: "itemKey")
+        defaults.setObject("", forKey: "descriptionKey")
+    }
+    
+}
+
+extension AddItemViewController:UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        //if top VC is main VC, then do something
+        if navigationController.topViewController.isMemberOfClass(ViewController) {
+            saveNewItem()
+            deleteDraft()
+        }
+        
+    }
 }

@@ -13,10 +13,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var object1 = Object(name: "Table Row 1", note: "my detailed notes go here")
     var objectList = [Object]()
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddItem" {
+            //check for navigation controller
             // do something custom if necessary
             let addItemVC = segue.destinationViewController as AddItemViewController
+            if self.navigationController != nil {
+                let navVC:UINavigationController = self.navigationController!
+                navVC.delegate = addItemVC
+            }
+            
             addItemVC.objectList = self.objectList
         }
     }
@@ -98,4 +105,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 
 }
+
+//extension ViewController:UINavigationControllerDelegate {
+//    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+//        //check for top vc
+//        if navigationController.topViewController.isEqual(<#object: AnyObject?#>) {
+//            //check for willshow vc
+//            if viewController .isEqual(self) {
+//                //do something interesting in the meanwhile
+//                    println("about to show this view controller incoming from some other one mentioned above!!")
+//            }
+//        }
+//        
+//    }
+//}
 
